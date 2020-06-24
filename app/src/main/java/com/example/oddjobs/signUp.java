@@ -108,8 +108,9 @@ public class signUp extends AppCompatActivity {
             public void onClick(View v) {
                 if(username.getText().toString() != null && password.getText().toString() != null
                         && address.getText().toString() != null && zipCode.getText().toString() != null){
-                    writeToDataBase();
                     createUser(email.getText().toString(), password.getText().toString());
+                    writeToDataBase();
+
                 }
             }
         });
@@ -124,7 +125,9 @@ public class signUp extends AppCompatActivity {
     }
 
     private void writeNewUserToDataBase(String username, String password, String address, String zipCode) {
-        User user = new User(username, password, address, zipCode);
-        mDatabase.child("users").child(mAuth.getCurrentUser().getUid()).setValue(user);
+        String UID = mAuth.getCurrentUser().getUid();
+        System.out.println(UID + "THIS IS THE UID HIROWVNIDGNWNLSNDKKDJFKDKKKKKKK");
+        User user = new User(username, password, address, zipCode, UID);
+        mDatabase.child("users").child(UID).setValue(user);
     }
 }

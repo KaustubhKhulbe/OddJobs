@@ -23,16 +23,15 @@ import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "TAG";
     //UI Components
     private TextView username, password;
     private Button logIn, signUp;
 
-    private FirebaseAuth mAuth;
-    private static final String TAG = "TAG";
-    private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference myRef;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    private String userID;
+    private DatabaseReference mDatabase;
+    private DatabaseReference mDatabaseReference;
+    private ValueEventListener databaseListener;
+    private boolean status = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initializeUIComponents();
+
+
     }
 
     private void initializeUIComponents(){
@@ -58,6 +59,12 @@ public class MainActivity extends AppCompatActivity {
 
                 //confirmAccountDetails();
 
+                readUserData();
+
+                if(status){
+
+                }
+
             }
         });
 
@@ -70,27 +77,58 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-   /* private void confirmAccountDetails() {
-        myRef.addValueEventListener(new ValueEventListener() {
+    private void readUserData(){
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference()
+                .child("users");
+
+        databaseListener = new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                checkUserInfo(dataSnapshot);
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                // Post post = dataSnapshot.getValue(Post.class);
+                // ...
+
+                for(DataSnapshot ds: dataSnapshot.getChildren()){
+                    System.out.println(ds.getChildren());
+                    System.out.println("TRUETRUETRUETRUE");
+
+
+                    if(ds.getValue(User.class).getUsername().equals(username.getText().toString()) && ds.getValue(User.class).getPassword().equals(password.getText().toString())){
+                        System.out.println("TRUETRUETRUETRUE");
+                        System.out.println(ds.getValue(User.class).getUID()+ "BILLYBILLYBOBOB");
+                        Intent intent = new Intent(MainActivity.this, succesfullyLogedIn.class);
+                        intent.putExtra("UID", ds.getValue(User.class).getUID());
+                        startActivity(intent);
+                        status = true;
+                    }
+                    else{
+                        System.out.println("BOOOOOOOOOO");
+
+                    }
+
+                }
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // ...
             }
-        });
+        };
+        mDatabaseReference.addValueEventListener(databaseListener);
     }
 
-    private void checkUserInfo(DataSnapshot dataSnapshot){
+    @Override
+    public void onStop() {
+        super.onStop();
 
-        for(DataSnapshot ds: dataSnapshot.getChildren()){
-            User user = new User();
+        // Remove post value event listener
+        if (databaseListener != null) {
+            mDatabaseReference.removeEventListener(databaseListener);
         }
 
-    }*/
+    }
 
 
 }
