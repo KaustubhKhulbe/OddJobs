@@ -13,7 +13,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class signUp extends AppCompatActivity {
 
     //Declare UI Components
-    private TextView email, username, password;
+    private TextView username, password, address, zipCode;
     private Button signUp;
 
     //FireBase Components
@@ -27,10 +27,11 @@ public class signUp extends AppCompatActivity {
     }
 
     private void initializeUIComponents(){
-        email = (TextView) findViewById(R.id.email);
         username = (TextView) findViewById(R.id.username);
         password = (TextView) findViewById(R.id.password);
-        signUp = (Button) findViewById(R.id.signUp);
+        address = (TextView) findViewById(R.id.address);
+        zipCode = (TextView) findViewById(R.id.zipCode);
+        signUp = (Button) findViewById(R.id.signUpUser);
 
         setOnClickListenersForButtons();
     }
@@ -39,29 +40,24 @@ public class signUp extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(email.getText().toString() != null && username.getText().toString() != null && password.getText().toString() != null){
-
+                if(username.getText().toString() != null && password.getText().toString() != null
+                        && address.getText().toString() != null && zipCode.getText().toString() != null){
+                    writeToDataBase();
                 }
             }
         });
     }
 
     public void writeToDataBase() {
-        //TODO need to make it so that it checks
-        // if checkmark is ticked at sign up time, not at
-        // anytime or this will enable it as true if user
-        // accidentally clicks it
 
-
-        //TODO database updating previously signed in user not current user
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        writeNewUserToDataBase(email.getText().toString(), username.getText().toString(), password.getText().toString());
+        writeNewUserToDataBase(username.getText().toString(), password.getText().toString(), address.getText().toString(), zipCode.getText().toString());
 
     }
 
-    private void writeNewUserToDataBase(String email, String username, String password) {
-        User user = new User(email, username, password);
-        mDatabase.child("users").child(email).setValue(user);
+    private void writeNewUserToDataBase(String username, String password, String address, String zipCode) {
+        User user = new User(username, password, address, zipCode);
+        mDatabase.child("users").child(username).setValue(user);
     }
 }

@@ -2,22 +2,20 @@ package com.example.oddjobs;
 
 public class User {
 
-    String email, username, password;
+    String username, password, address, zipCode;
     public User(){ //Default constructor for firebase database
 
     }
 
-    public User(String email, String username, String password){
-        this.email = email;
+    public User(String username, String password, String address, String zipCode){
+
         this.username = username;
         this.password = password;
+        this.address = address;
+        this.zipCode = zipCode;
     }
 
     //Getter methods for User Class
-
-    public String getEmail() {
-        return email;
-    }
 
     public String getUsername(){
         return username;
@@ -27,16 +25,28 @@ public class User {
         return password;
     }
 
+    public String getAddress(){
+        return address;
+    }
+
+    public String getZipCode(){
+        return zipCode;
+    }
+
     //Setter methods for User Class
 
-    public void setEmail(String email){
-        this.email = email;
-    }
     public void setUsername(String username){
         this.username = username;
     }
     public void setPassword(String password){
         this.password = password;
+    }
+
+    public void setAddress(String address){
+        this.address = address;
+    }
+    public void setZipCode(String zipCode){
+        this.zipCode = zipCode;
     }
 
 
