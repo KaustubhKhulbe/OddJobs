@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "204288361845",
+    "firebase_url": "https://odd-jobs-2c753.firebaseio.com",
+    "project_id": "odd-jobs-2c753",
+    "storage_bucket": "odd-jobs-2c753.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204288361845:android:0d91fe72ced34a33323f3c",
+        "android_client_info": {
+          "package_name": "com.example.oddjobs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204288361845-0v5gcjk39unh861co10av5lp9up366m1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcu7E1UE2m439T_dDsEr-o15PLpAj9T9Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "204288361845-0v5gcjk39unh861co10av5lp9up366m1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
