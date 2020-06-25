@@ -7,10 +7,22 @@
     tools:context=".succesfullyRequested">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/JobCreated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="195dp"
-        tools:layout_editor_absoluteY="155dp" />
+        android:text="Job has been requested!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="return to menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/JobCreated" />
 </androidx.constraintlayout.widget.ConstraintLayout>
