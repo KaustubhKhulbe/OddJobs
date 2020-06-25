@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Request"></activity>
+        <activity android:name=".succesfullyRequested"></activity>
+        <activity android:name=".Request" />
         <activity android:name=".Orders" />
         <activity android:name=".successfullySignedUp" />
         <activity android:name=".succesfullyLogedIn" />
