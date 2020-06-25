@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -16,7 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 public class succesfullyLogedIn extends AppCompatActivity {
 
     private static TextView userName, userAddress;
-
+    private static Button orders, request;
 
     private static final String TAG = "TAG";
     private String UID;
@@ -36,6 +38,27 @@ public class succesfullyLogedIn extends AppCompatActivity {
 
         userName = (TextView) findViewById(R.id.UserName);
         userAddress = (TextView) findViewById(R.id.userAddress);
+
+        orders = (Button) findViewById(R.id.Jobs);
+        request = (Button) findViewById(R.id.request);
+
+        orders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(succesfullyLogedIn.this, Orders.class);
+                intent.putExtra("UID", UID);
+                startActivity(intent);
+            }
+        });
+
+        request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(succesfullyLogedIn.this, Request.class);
+                intent.putExtra("UID", UID);
+                startActivity(intent);
+            }
+        });
 
         readUserData();
 
