@@ -60,7 +60,7 @@ public class Request extends AppCompatActivity {
         //User user = new User(username, password, address, zipCode, UID);
         ///mDatabase.child("users").child(UID).setValue(user);
 
-        Post post = new Post(address,job,description,rate);
+        Post post = new Post(address,job,description,rate, false);
         mDatabase.child("jobs").child(address).setValue(post);
     }
 }

@@ -4,16 +4,19 @@ public class Post {
 
     String address, job, description;
     int rate;
+    boolean isAccepted;
 
     public void Post(){
 
     }
 
-    public Post(String address, String job, String description, int rate){
+    public Post(String address, String job, String description, int rate, boolean isAccepted){
         this.address = address;
         this.job = job;
         this.description = description;
         this.rate = rate;
+
+        this.isAccepted = isAccepted;
 
     }
 
@@ -44,6 +47,14 @@ public class Post {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isAccepted() {
+        return isAccepted;
+    }
+
+    public void setAccepted(boolean accepted) {
+        isAccepted = accepted;
     }
 
     public void setAddress(String address) {
