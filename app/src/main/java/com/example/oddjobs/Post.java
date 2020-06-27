@@ -6,7 +6,7 @@ public class Post {
     int rate;
     boolean isAccepted;
 
-    public void Post(){
+    public Post(){
 
     }
 
