@@ -2,7 +2,7 @@ package com.example.oddjobs;
 
 public class User {
 
-    String username, password, address, zipCode, UID;
+    String username, password, address, zipCode, UID, accepted = null;
     public User(){ //Default constructor for firebase database
 
     }
@@ -15,6 +15,8 @@ public class User {
         this.zipCode = zipCode;
         this.UID = UID;
     }
+
+
 
     //Getter methods for User Class
 
@@ -58,7 +60,11 @@ public class User {
         this.UID = UID;
     }
 
+    public String getAccepted() {
+        return accepted;
+    }
 
-
-
+    public void setAccepted(String accepted) {
+        this.accepted = accepted;
+    }
 }

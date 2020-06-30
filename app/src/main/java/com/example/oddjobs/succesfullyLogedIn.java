@@ -21,7 +21,7 @@ public class succesfullyLogedIn extends AppCompatActivity {
     private static Button orders, request;
 
     private static final String TAG = "TAG";
-    private String UID;
+    private String UID, address;
     private DatabaseReference mDatabase;
     private DatabaseReference mDatabaseReference;
     private ValueEventListener databaseListener;
@@ -42,11 +42,16 @@ public class succesfullyLogedIn extends AppCompatActivity {
         orders = (Button) findViewById(R.id.Jobs);
         request = (Button) findViewById(R.id.request);
 
+
+
+        readUserData();
+
+
         orders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(succesfullyLogedIn.this, Orders.class);
-                intent.putExtra("UID", UID);
+                intent.putExtra("name", userName.getText().toString());
                 startActivity(intent);
             }
         });
@@ -59,8 +64,6 @@ public class succesfullyLogedIn extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        readUserData();
 
 
     }
@@ -87,6 +90,7 @@ public class succesfullyLogedIn extends AppCompatActivity {
                 }*/
                 userName.setText(dataSnapshot.child(UID).getValue(User.class).getUsername());
                 userAddress.setText(dataSnapshot.child(UID).getValue(User.class).getAddress());
+                address = dataSnapshot.child(UID).getValue(User.class).getAddress();
             }
 
             @Override

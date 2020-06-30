@@ -2,7 +2,7 @@ package com.example.oddjobs;
 
 public class Post {
 
-    String address, job, description;
+    String address, job, description, homeUID;
     int rate;
     boolean isAccepted;
 
@@ -10,16 +10,23 @@ public class Post {
 
     }
 
-    public Post(String address, String job, String description, int rate, boolean isAccepted){
+    public Post(String address, String job, String description, int rate, boolean isAccepted, String homeUID){
         this.address = address;
         this.job = job;
         this.description = description;
         this.rate = rate;
-
+        this.homeUID = homeUID;
         this.isAccepted = isAccepted;
 
     }
 
+    public String getHomeUID() {
+        return homeUID;
+    }
+
+    public void setHomeUID(String homeUID) {
+        this.homeUID = homeUID;
+    }
 
     public String getAddress() {
         return address;
